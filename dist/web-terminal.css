@@ -10,12 +10,25 @@
     width: 735px;
 }
 
-#web-terminal-input {
+#web-terminal-form, #web-terminal-input  {
     display: block;
     width: 100%;
     border: none;
-    border-top: solid 1px white;
     color: white;
     font-family: monospace;
     background-color: #14121f;
+}
+
+#web-terminal-input {
+    border-top: solid 1px white;
+}
+
+#web-terminal-form input[type=submit]
+{
+    width: 0px;
+    display: none;
+}
+
+#web-terminal-form input[type=text]:focus {
+    outline: none;
 }
