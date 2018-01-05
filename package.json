@@ -1,7 +1,7 @@
 {
   "name": "web-terminal",
   "version": "1.0.0",
-  "description": "Simple \"terminal\" for frontend IO in browser",
+  "description": "Simple frontend browser \"terminal\".",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
