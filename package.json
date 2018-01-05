@@ -1,0 +1,20 @@
+{
+  "name": "web-terminal",
+  "version": "1.0.0",
+  "description": "Simple \"terminal\" for frontend IO in browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "terminal"
+  ],
+  "author": "Matthew Connelly",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-include": "^1.2.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
