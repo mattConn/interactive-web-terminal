@@ -1,4 +1,4 @@
-TRANSPILER = 'node_modules/babel-cli/bin/babel.js'
+TRANSPILER = node_modules/babel-cli/bin/babel.js
 DISTCHECK = if [ ! -d dist ]; then mkdir dist; fi;
 
 dist/main.js: src/*.es6
