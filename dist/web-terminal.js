@@ -3,17 +3,9 @@
 var terminalCtn = document.querySelector("#web-terminal");
 terminalCtn.innerHTML = "<div id = \"web-terminal-inner\"></div>";
 var terminal = document.querySelector("#web-terminal-inner");
-var terminalInputHTML = "<input id=\"web-terminal-input\" type=text placeholder=\"Input\">";
+var terminalInputHTML = "<input id=\"web-terminal-input\" type=text placeholder=\">\">";
 terminal.insertAdjacentHTML("afterend", terminalInputHTML);
 var terminalInput = document.querySelector("#web-terminal-input");
-
-var terminalStyle = ["padding: 20px;", "color: white;", "font-family: monospace;", "background-color: #14121f;"];
-var terminalCtnStyle = ["display: block;", "width: 735px;"];
-var terminalInputStyle = ["display: block;", "width: 100%;", "border: none;", "border-top: solid 1px white;", "color: white;", "font-family: monospace;", "background-color: #14121f;"];
-
-terminalCtn.style.cssText = terminalCtnStyle.join("");
-terminal.style.cssText = terminalStyle.join("");
-terminalInput.style.cssText = terminalInputStyle.join("");
 
 var terminalText = [];
 
