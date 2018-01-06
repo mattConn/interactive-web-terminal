@@ -9,7 +9,7 @@ let terminal = document.querySelector("#web-terminal-inner"); // get terminal el
 // terminal input html
 let terminalInputHTML = [
     "<form id=\"web-terminal-form\">",
-        "<input id=\"web-terminal-input\" type=\"text\" placeholder=\"$\" autocomplete=\"off\" />",
+        "<input id=\"web-terminal-input\" type=\"text\" placeholder=\"$\" autocomplete=\"off\" autofocus />",
         "<input type=\"submit\" />",
     "</form>"
 ]

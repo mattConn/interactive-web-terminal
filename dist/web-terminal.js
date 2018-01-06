@@ -4,7 +4,7 @@ var terminalCtn = document.querySelector("#web-terminal");
 terminalCtn.innerHTML = "<div id = \"web-terminal-inner\"></div>";
 var terminal = document.querySelector("#web-terminal-inner");
 
-var terminalInputHTML = ["<form id=\"web-terminal-form\">", "<input id=\"web-terminal-input\" type=\"text\" placeholder=\"$\" autocomplete=\"off\" />", "<input type=\"submit\" />", "</form>"];
+var terminalInputHTML = ["<form id=\"web-terminal-form\">", "<input id=\"web-terminal-input\" type=\"text\" placeholder=\"$\" autocomplete=\"off\" autofocus />", "<input type=\"submit\" />", "</form>"];
 terminal.insertAdjacentHTML("afterend", terminalInputHTML.join(""));
 var terminalInput = document.querySelector("#web-terminal-input");
 var terminalForm = document.querySelector("#web-terminal-form");
