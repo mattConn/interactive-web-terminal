@@ -8,30 +8,72 @@ var terminalInputHTML = ["<form id=\"web-terminal-form\">", "<input id=\"web-ter
 terminal.insertAdjacentHTML("afterend", terminalInputHTML.join(""));
 var terminalInput = document.querySelector("#web-terminal-input");
 var terminalForm = document.querySelector("#web-terminal-form");
+var printStack = [];
+var displayStack = [];
 
-var terminalText = [];
-
-var print = function print(text) {
+var put = function put() {
+    var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     var newline = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
     var nl = newline == false ? "" : "<br>";
-    terminalText.unshift("<span>" + text + "</span>" + nl);
-    terminalText.pop();
-    terminal.innerHTML = terminalText.join("");
+    if (text != null) {
+        printStack.push("<span>" + text + "</span>" + nl);
+    } else {
+        printStack.push(labelBufferPut);
+    }
 };
 
+var labelClearScreen = "_CLEAR_SCREEN";
 var rows = 24;
 var cls = function cls() {
+    printStack.push(labelClearScreen);
+};
+var clearScreen = function clearScreen() {
+    terminal.innerHTML = "";
+    displayStack = [];
     for (var i = 0; i < rows; i++) {
-        terminalText[i] = "<br>";
-    }terminal.innerHTML = terminalText.join("");
+        displayStack.push("<br>");
+    }terminal.innerHTML = displayStack.join("");
+};
+
+var printIndex = 0;
+var display = function display() {
+    while (printStack[printIndex] != labelBufferGet && printIndex < printStack.length) {
+
+        if (printStack[printIndex] == labelBufferPut) displayStack.unshift("<span>" + buffer + "</span><br>");else if (printStack[printIndex] == labelClearScreen) clearScreen();else displayStack.unshift(printStack[printIndex]);
+
+        displayStack.pop();
+        printIndex++;
+    }
+    if (printIndex <= printStack.length) {
+        terminal.innerHTML = displayStack.join("");
+        printIndex++;
+    }
+    if (printIndex == printStack.length + 1) {
+        displayStack.unshift("<span>&lt;End of script&gt;</span><br>");
+        displayStack.pop();
+        terminal.innerHTML = displayStack.join("");
+        printIndex++;
+    }
+};
+var buffer = "";
+var labelBufferGet = "_GET_BUFFER";
+var labelBufferPut = "_PUT_BUFFER";
+
+var get = function get() {
+    printStack.push(labelBufferGet);
 };
 
 terminalForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    print(terminalInput.value);
+    buffer = terminalInput.value;
     terminalInput.value = "";
+    display();
 });
 
 cls();
+
+setTimeout(function () {
+    display();
+}, 0);
 

@@ -3,3 +3,8 @@
 #include input_functions.es6
 
 cls(); // clear terminal for initial run
+
+// initial display of text from printStack until user input needed
+setTimeout(function(){
+    display();
+},0)

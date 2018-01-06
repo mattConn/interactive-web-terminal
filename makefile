@@ -7,10 +7,13 @@ dist/web-terminal.js: src/*.es6
 dist/demo.html: src/demo.html
 	cp $^ $@
 
+dist/demo.js: src/demo.js
+	cp $^ $@
+
 dist/web-terminal.css: src/web-terminal.css
 	cp $^ $@
 
-all: dist/web-terminal.js dist/demo.html dist/web-terminal.css
+all: dist/web-terminal.js dist/demo.html dist/web-terminal.css dist/demo.js
 
 clean:
 	rm -rf dist
