@@ -1,9 +1,6 @@
-put("Enter something:");
-
-get();
-put();
-
-get();
-
-put("fizzbuzz");
-get();
+// var i = 0;
+// while(i<100)
+// {
+//     put("foo");
+//     i++;
+// }

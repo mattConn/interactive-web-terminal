@@ -8,18 +8,28 @@ var terminalInputHTML = ["<form id=\"web-terminal-form\">", "<input id=\"web-ter
 terminal.insertAdjacentHTML("afterend", terminalInputHTML.join(""));
 var terminalInput = document.querySelector("#web-terminal-input");
 var terminalForm = document.querySelector("#web-terminal-form");
-var buffer = "";
-var labelBufferGet = "_GET_BUFFER";
-var labelBufferPut = "_PUT_BUFFER";
 
-var get = function get() {
-    printStack.push(labelBufferGet);
+var textHeight = 15;
+var terminalRows = 24;
+terminal.style.height = textHeight * terminalRows + "px";
+var display = function display(html) {
+    terminal.innerHTML += html;
 };
 
-terminalForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    buffer = terminalInput.value;
-    terminalInput.value = "";
-    display();
-});
+var span = function span(text) {
+    return "<span>" + text + "</span>";
+};
+
+var put = function put(string) {
+    var newline = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+    var nl = newline ? "<br>" : "";
+    display(span("" + string + nl));
+};
+
+var cls = function cls() {
+    for (var i = 0; i < terminalRows; i++) {
+        put("<br>");
+    }
+};
 
