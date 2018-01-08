@@ -1,6 +1,3 @@
-// var i = 0;
-// while(i<100)
-// {
-//     put("foo");
-//     i++;
-// }
+put("Do you wish to continue? [y/n]");
+put("test1");
+put("test2");
