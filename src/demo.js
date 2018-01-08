@@ -1,9 +1,3 @@
-put("Enter something:");
-
-get();
-put();
-
-get();
-
-put("fizzbuzz");
-get();
+put("Do you wish to continue? [y/n]");
+put("test1");
+put("test2");

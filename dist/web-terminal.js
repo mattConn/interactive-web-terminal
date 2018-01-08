@@ -8,72 +8,43 @@ var terminalInputHTML = ["<form id=\"web-terminal-form\">", "<input id=\"web-ter
 terminal.insertAdjacentHTML("afterend", terminalInputHTML.join(""));
 var terminalInput = document.querySelector("#web-terminal-input");
 var terminalForm = document.querySelector("#web-terminal-form");
-var printStack = [];
-var displayStack = [];
 
-var put = function put() {
-    var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+var textHeight = 15;
+var terminalRows = 24;
+terminal.style.height = textHeight * terminalRows + "px";
+var printStack = [];
+
+var display = function display(html) {
+    terminal.insertAdjacentHTML("afterbegin", html);
+};
+
+var span = function span(text) {
+    return "<span>" + text + "</span>";
+};
+
+var put = function put(string) {
     var newline = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-    var nl = newline == false ? "" : "<br>";
-    if (text != null) {
-        printStack.push("<span>" + text + "</span>" + nl);
-    } else {
-        printStack.push(labelBufferPut);
-    }
+    var nl = newline ? "<br>" : "";
+    printStack.push("" + span(string) + nl);
 };
 
-var labelClearScreen = "_CLEAR_SCREEN";
-var rows = 24;
 var cls = function cls() {
-    printStack.push(labelClearScreen);
-};
-var clearScreen = function clearScreen() {
-    terminal.innerHTML = "";
-    displayStack = [];
-    for (var i = 0; i < rows; i++) {
-        displayStack.push("<br>");
-    }terminal.innerHTML = displayStack.join("");
-};
-
-var printIndex = 0;
-var display = function display() {
-    while (printStack[printIndex] != labelBufferGet && printIndex < printStack.length) {
-
-        if (printStack[printIndex] == labelBufferPut) displayStack.unshift("<span>" + buffer + "</span><br>");else if (printStack[printIndex] == labelClearScreen) clearScreen();else displayStack.unshift(printStack[printIndex]);
-
-        displayStack.pop();
-        printIndex++;
+    for (var _i = 0; _i <= terminalRows; _i++) {
+        put("");
     }
-    if (printIndex <= printStack.length) {
-        terminal.innerHTML = displayStack.join("");
-        printIndex++;
-    }
-    if (printIndex == printStack.length + 1) {
-        displayStack.unshift("<span>&lt;End of script&gt;</span><br>");
-        displayStack.pop();
-        terminal.innerHTML = displayStack.join("");
-        printIndex++;
-    }
-};
-var buffer = "";
-var labelBufferGet = "_GET_BUFFER";
-var labelBufferPut = "_PUT_BUFFER";
-
-var get = function get() {
-    printStack.push(labelBufferGet);
 };
 
 terminalForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    buffer = terminalInput.value;
     terminalInput.value = "";
-    display();
 });
 
-cls();
-
+var i = 0;
 setTimeout(function () {
-    display();
+    while (i < printStack.length) {
+        display(printStack[i]);
+        i++;
+    }
 }, 0);
 

@@ -16,3 +16,8 @@ let terminalInputHTML = [
 terminal.insertAdjacentHTML("afterend", terminalInputHTML.join("")); // insert input after terminal in ctn
 let terminalInput = document.querySelector("#web-terminal-input"); // get input element
 let terminalForm = document.querySelector("#web-terminal-form"); // get input form element
+
+// for setting terminal height (rows x text height)
+const textHeight = 15; //px
+const terminalRows = 24; // terminal height
+terminal.style.height = `${textHeight * terminalRows}px`;

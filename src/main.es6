@@ -1,10 +1,10 @@
 #include terminal_setup.es6
-#include output_functions.es6
-#include input_functions.es6
+#include io_functions.es6
 
-cls(); // clear terminal for initial run
-
-// initial display of text from printStack until user input needed
-setTimeout(function(){
-    display();
-},0)
+let i = 0;
+setTimeout(function () {
+    while (i < printStack.length) {
+        display(printStack[i]);
+        i++;
+    }
+}, 0);
