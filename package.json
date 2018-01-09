@@ -1,5 +1,5 @@
 {
-  "name": "web-terminal",
+  "name": "web-interactive-terminal",
   "version": "1.0.0",
   "description": "Boilerplate for text-based user interaction in browser.",
   "main": "index.js",
