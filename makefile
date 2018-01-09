@@ -1,19 +1,19 @@
 TRANSPILER = node_modules/babel-cli/bin/babel.js
-DISTCHECK = if [ ! -d dist ]; then mkdir dist; fi;
+CSS-PP = node_modules/node-sass/bin/node-sass
 
-dist/web-terminal.js: src/*.es6
-	$(DISTCHECK) gpp -C src/main.es6 > src/_main.es6; $(TRANSPILER) src/_main.es6 > $@; rm src/_main.es6
+dist/index.js: src/*.es6
+	$(TRANSPILER) src/index.es6 > $@
 
-dist/demo.html: src/demo.html
+dist/index.html: src/index.html
 	cp $^ $@
 
-dist/demo.js: src/demo.js
-	cp $^ $@
+dist/style.css: src/style.scss
+	$(CSS-PP) $^ > $@
 
-dist/web-terminal.css: src/web-terminal.css
-	cp $^ $@
+distcheck:
+	if [ ! -d dist ]; then mkdir dist; fi;
 
-all: dist/web-terminal.js dist/demo.html dist/web-terminal.css dist/demo.js
+all: distcheck dist/index.js dist/index.html dist/style.css
 
 clean:
 	rm -rf dist

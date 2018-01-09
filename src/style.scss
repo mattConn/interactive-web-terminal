@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+}
+
+#web-terminal-ctn {
+    display: block;
+    width: 735px;
+    margin: 80px auto;
+}
+
+$fontHeight: 15px;
+$terminalRows: 24;
+#web-terminal {
+    padding: 20px;
+    color: white;
+    font-family: monospace;
+    background-color: #14121f;
+    overflow-y: scroll;
+    height: $fontHeight * $terminalRows;
+}
+
+#web-terminal-form, #web-terminal-input  {
+    display: block;
+    width: 100%;
+    border: none;
+    color: white;
+    font-family: monospace;
+    background-color: #14121f;
+}
+
+#web-terminal-input {
+    border-top: solid 1px white;
+}
+
+#web-terminal-form {
+    input[type=submit] {
+        width: 0px;
+        display: none;
+    }
+
+    input[type=text]:focus {
+        outline: none;
+    }
+}
