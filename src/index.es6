@@ -20,17 +20,3 @@ let cls = function () { // clear screen
         printf("");
     }
 }
-
-// handle user input
-let buffer;
-terminalForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    buffer = terminalInput.value;
-
-    if(buffer == "clear")
-        cls()
-    else
-        printf(buffer);
-
-    terminalInput.value = "";
-});

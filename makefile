@@ -7,13 +7,16 @@ dist/index.js: src/*.es6
 dist/index.html: src/index.html
 	cp $^ $@
 
+dist/script.js: src/script.js
+	cp $^ $@
+
 dist/style.css: src/style.scss
 	$(CSS-PP) $^ > $@
 
 distcheck:
 	if [ ! -d dist ]; then mkdir dist; fi;
 
-all: distcheck dist/index.js dist/index.html dist/style.css
+all: distcheck dist/index.js dist/index.html dist/script.js dist/style.css
 
 clean:
 	rm -rf dist
