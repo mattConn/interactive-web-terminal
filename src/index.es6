@@ -24,6 +24,14 @@ let cls = function () { // clear screen
 let bufferHistory = [];
 let bhIndex = 0;
 
+let bhManage = function(){ // manage buffer history on input submit
+    bufferHistory.shift();
+    bufferHistory.unshift(buffer);
+    bufferHistory.unshift("");
+
+    bhIndex = 0;
+};
+
 // cycle through terminal history
 document.onkeydown = keyCheck;
 

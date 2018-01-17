@@ -32,6 +32,15 @@ var cls = function cls() {
 var bufferHistory = [];
 var bhIndex = 0;
 
+var bhManage = function bhManage() {
+    // manage buffer history on input submit
+    bufferHistory.shift();
+    bufferHistory.unshift(buffer);
+    bufferHistory.unshift("");
+
+    bhIndex = 0;
+};
+
 // cycle through terminal history
 document.onkeydown = keyCheck;
 

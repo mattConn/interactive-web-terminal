@@ -6,12 +6,7 @@ terminalForm.addEventListener("submit", function (e) {
 
     buffer = terminalInput.value;
 
-    // manage buffer history
-    bufferHistory.shift();
-    bufferHistory.unshift(buffer);
-    bufferHistory.unshift("");
-
-    bhIndex = 0; // reset buffer history index
+    bhManage();
 
     if(buffer == "clear")
         cls()
