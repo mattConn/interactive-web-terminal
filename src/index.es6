@@ -20,3 +20,31 @@ let cls = function () { // clear screen
         printf("");
     }
 }
+
+let bufferHistory = [];
+let bhIndex = 0;
+
+// cycle through terminal history
+document.onkeydown = keyCheck;
+
+function keyCheck(e)
+{
+  let keycode = window.event.keyCode;
+
+  switch (keycode)
+  {
+    case 38:  // up arrow 
+        if(bhIndex < bufferHistory.length-1){
+            bhIndex++;
+            terminalInput.value = bufferHistory[bhIndex];
+        }
+	break;
+
+    case 40:  // down arrow 
+        if(bhIndex > 0){
+            bhIndex--;
+            terminalInput.value = bufferHistory[bhIndex];
+        }
+	break;
+  }
+}
