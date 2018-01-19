@@ -3,10 +3,8 @@ var buffer; // store user input
 // action to execute on buffer submit
 terminalForm.addEventListener("submit", function (e) {
     e.preventDefault();
-
     buffer = terminalInput.value;
-
-    bhManage();
+    bhManage(); // manage buffer history
 
     if(buffer == "clear")
         cls()
