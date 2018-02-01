@@ -8,7 +8,7 @@ terminalForm.addEventListener("submit", function (e) {
 
 
 	/*============================================*/
-	/* Replace this block with your submit actions */
+	/* Replace this block with your submit action */
 
     if(buffer == "clear")
         cls()
