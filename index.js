@@ -30,8 +30,6 @@ const bhManage = function(){ // manage buffer history on input submit
 };
 
 // cycle through terminal history
-document.onkeydown = keyCheck;
-
 const keyCheck = e =>
 {
   const keycode = window.event.keyCode;
@@ -53,3 +51,5 @@ const keyCheck = e =>
 	break;
   }
 }
+
+document.onkeydown = keyCheck;
