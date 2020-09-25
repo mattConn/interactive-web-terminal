@@ -4,6 +4,10 @@
 body {
   background-color: #333; }
 
+a {
+	color: white;
+}
+
 #web-terminal-ctn {
   display: block;
   width: 735px;
