@@ -1,30 +1,27 @@
-let terminalCtn = document.querySelector("#web-terminal-ctn"); // get terminal container element
-let terminal = document.querySelector("#web-terminal"); // get terminal element
-let terminalInput = document.querySelector("#web-terminal-input"); // get input element
-let terminalForm = document.querySelector("#web-terminal-form"); // get input form element
+const terminalCtn = document.querySelector("#web-terminal-ctn"); // get terminal container element
+const terminal = document.querySelector("#web-terminal"); // get terminal element
+const terminalInput = document.querySelector("#web-terminal-input"); // get input element
+const terminalForm = document.querySelector("#web-terminal-form"); // get input form element
 
-let display = function (html) { //write to terminal
-    terminal.insertAdjacentHTML("afterbegin", html);
-};
+//write to terminal
+const display = html => terminal.insertAdjacentHTML("beforeend", html);
 
-let htmlElement = (element,text) => `<${element}>${text}</${element}>`;
+const htmlElement = (element,text) => `<${element}>${text}</${element}>`;
 
-let printf = function (string, newline = true) { //format, write to terminal
-    let nl = newline ? "<br>" : "";
+const printf = function (string, newline = true) { //format, write to terminal
+    const nl = newline ? "<br>" : "";
     display(`${htmlElement("span",string)}${nl}`);
 }
 
-let fontHeight = 15;
-let cls = function () { // clear screen
-    for (let i = 0; i <= terminal.clientHeight/fontHeight; i++) {
-        printf("");
-    }
+const fontHeight = 15;
+const cls = () => { // clear screen
+	terminal.innerHTML="";
 }
 
-let bufferHistory = [];
+const bufferHistory = [];
 let bhIndex = 0;
 
-let bhManage = function(){ // manage buffer history on input submit
+const bhManage = function(){ // manage buffer history on input submit
     bufferHistory.shift();
     bufferHistory.unshift(buffer);
     bufferHistory.unshift("");
@@ -37,7 +34,7 @@ document.onkeydown = keyCheck;
 
 function keyCheck(e)
 {
-  let keycode = window.event.keyCode;
+  const keycode = window.event.keyCode;
 
   switch (keycode)
   {

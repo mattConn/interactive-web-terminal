@@ -1,5 +1,3 @@
-const userPrompt = 'Type anything for ';
-
 const msg = [
 	'This is an interactive web terminal. Type anything or press enter for more info.',
 	'Type "clear" to clear screen. The up and down arrow keys will cycle through your history.',
@@ -28,7 +26,7 @@ terminalForm.addEventListener("submit", e => {
 			break;
 
 		default:
-			if(msg.length) printf('$ '+msg.shift());
+			if(msg.length) printf('$ '+msg.shift()+(msg.length >= 1 ? ' (More...)' : ''));
 	}
 
     terminalInput.value = "";
