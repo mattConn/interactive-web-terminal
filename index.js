@@ -32,7 +32,7 @@ const bhManage = function(){ // manage buffer history on input submit
 // cycle through terminal history
 document.onkeydown = keyCheck;
 
-function keyCheck(e)
+const keyCheck = e =>
 {
   const keycode = window.event.keyCode;
 
