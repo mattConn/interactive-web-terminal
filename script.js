@@ -1,7 +1,7 @@
-var buffer; // store user input
+let buffer; // store user input
 
 // handle buffer submit
-terminalForm.addEventListener("submit", function (e) {
+terminalForm.addEventListener("submit", e => {
     e.preventDefault();
     buffer = terminalInput.value;
     bhManage(); // manage buffer history
